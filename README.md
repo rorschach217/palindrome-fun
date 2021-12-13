@@ -14,4 +14,4 @@ Example
 1515 + 5151 = 6666
 
 
-# But for sum reason 196 bumber is contravertial. try it in above html
+# But for sum reason 196 bumber is contravertial. try using above code.
