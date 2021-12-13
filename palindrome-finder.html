@@ -1,0 +1,50 @@
+<html>
+<head>
+<script>
+	function findPalindrome(event){
+		//196 infinite calculation number
+		event.preventDefault();
+		let number = document.getElementById("number").value.toString();
+		let reversed = number.split("").reverse().join("");
+		let finalOutput = ""
+		if (reversed == number){
+			document.getElementById("result").innerHTML = "Number is already palindrome !!!";
+			document.getElementById("_form").reset();
+			return false;
+		}
+		function loopToFindPalindrome(){
+			finalOutput += number + " + " + reversed + " = ";
+			let newNumber = parseInt(number) + parseInt(reversed);
+			finalOutput += newNumber.toString() + "<br>";
+			number = newNumber.toString();
+			reversed = number.split("").reverse().join("");
+			document.getElementById("result").innerHTML = finalOutput;
+			if (reversed != number){
+				setTimeout(loopToFindPalindrome, 500)
+			}
+		}
+		loopToFindPalindrome();
+		document.getElementById("_form").reset();
+	}
+	function _clear(){
+		document.getElementById("result").innerHTML = "";
+		document.getElementById("_form").reset();
+	}
+</script>
+</head>
+
+<body>
+	<p>Palindrome finder</p>
+	<form id="_form">
+		<label for="number">Enter any number without decimal:</label><br>
+		<input type="number" id="number" name="number" step="0" value=""><br>
+		<button type="submit" >Submit</button>
+		<button type="button" onclick="_clear()">Clear</button>
+	</form>
+	<p id="result"></p>
+	<script>
+		let _form = document.getElementById("_form")
+		_form.addEventListener("submit", findPalindrome)
+	</script>
+</body>
+</html>
