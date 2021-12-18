@@ -1,5 +1,6 @@
 # palindrome-fun
-funny experiment with math.
+Funny experiment with math.
+Download html file and double click on it it will open in default browser. its not malware so don't worry.
 
 ## Fun fact about numbers
 if you take any number and reverse it and add them both together, you will find new number.
