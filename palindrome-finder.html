@@ -1,40 +1,43 @@
 <html>
 <head>
-<script>
-	function findPalindrome(event){
-		//196 infinite calculation number
-		event.preventDefault();
-		let number = document.getElementById("number").value.toString();
-		let reversed = number.split("").reverse().join("");
-		let finalOutput = ""
-		if (reversed == number){
-			document.getElementById("result").innerHTML = "Number is already palindrome !!!";
-			document.getElementById("_form").reset();
-			return false;
-		}
-		function loopToFindPalindrome(){
-			finalOutput += number + " + " + reversed + " = ";
-			let newNumber = parseInt(number) + parseInt(reversed);
-			finalOutput += newNumber.toString() + "<br>";
-			number = newNumber.toString();
-			reversed = number.split("").reverse().join("");
-			document.getElementById("result").innerHTML = finalOutput;
-			if (reversed != number){
-				setTimeout(loopToFindPalindrome, 500)
+	<title>Palindrome Finder</title>
+	<script>
+		function findPalindrome(event){
+			//196 infinite calculation number
+			event.preventDefault();
+			let number = document.getElementById("number").value.toString();
+			let reversed = number.split("").reverse().join("");
+			let finalOutput = ""
+			if (reversed == number){
+				document.getElementById("result").innerHTML = "Number is already palindrome !!!";
+				document.getElementById("_form").reset();
+				return false;
 			}
+			function loopToFindPalindrome(){
+				finalOutput += number + " + " + reversed + " = ";
+				let newNumber = parseInt(number) + parseInt(reversed);
+				finalOutput += newNumber.toString() + "<br>";
+				number = newNumber.toString();
+				reversed = number.split("").reverse().join("");
+				document.getElementById("result").innerHTML = finalOutput;
+				if (reversed != number){
+					setTimeout(loopToFindPalindrome, 500)
+				}
+			}
+			loopToFindPalindrome();
+			document.getElementById("_form").reset();
 		}
-		loopToFindPalindrome();
-		document.getElementById("_form").reset();
-	}
-	function _clear(){
-		document.getElementById("result").innerHTML = "";
-		document.getElementById("_form").reset();
-	}
-</script>
+		function _clear(){
+			document.getElementById("result").innerHTML = "";
+			document.getElementById("_form").reset();
+		}
+	</script>
 </head>
 
 <body>
 	<p>Palindrome finder</p>
+	<p>if you take any number and reverse it and add them both together, you will find new number. and if you repeat this process eventually you will find a palindrome bumber.</p>
+	<h1>But for sum reason 196 bumber is contravertial. If your page is stuck try reloading.</h1>
 	<form id="_form">
 		<label for="number">Enter any number without decimal:</label><br>
 		<input type="number" id="number" name="number" step="0" value=""><br>
